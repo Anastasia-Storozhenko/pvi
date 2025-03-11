@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Poppins', sans-serif; 
-    background-color: #f7f7f7;
+    background-color: #f7f4f6;
 }
 
 .header_main {
@@ -255,11 +255,12 @@ body {
     flex-direction: column; 
     gap: 10px;
     margin-left: 30px;
+    color: #515151;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: grey;
+    color: rgb(40, 40, 40);
 }
 
 .nav-links a.active {
