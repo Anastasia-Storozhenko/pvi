@@ -20,7 +20,13 @@ const ASSETS = [
   "/img/circle.png",
   "/img/flower.png",
   "/img/pencil.png",
-  "/img/close.png"
+  "/img/close.png",
+  "/img/ava1.png",
+  "/img/ava2.png",
+  "/img/ava3.png",
+  "/img/ava4.png",
+  "/img/1.png",
+  "/img/2.png",
 ];
 
 self.addEventListener("install", (event) => {
