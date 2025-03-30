@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Students</title>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <header class="header_main">
         <a href="./students.html" class="text_header">CMS</a>
         <div class="user_info">
-            <a href="./messenges.html" class="notification-bell">
+            <a href="" class="notification-bell">
                 <img src="./img/bell.png" alt="Notification" class="bell">
-                <span class="notification-dot"></span>
                 <div class="popup" style="display: none;">
                     <div class="messenge-popup">
                         <div class="users-info">
-                            <img src="./img/ava.jpg" alt="Ava" width="35" height="35" class="ava">
+                            <img src="./img/ava.png" alt="Ava" width="35" height="35" class="ava">
                             <p class="text-not">Romeo</p>
                         </div>
                         <div class="status-rectangle"></div>
@@ -24,14 +24,14 @@
                     
                     <div class="messenge-popup">
                         <div class="users-info">
-                            <img src="./img/ava.jpg" alt="Ava" width="35" height="35" class="ava">
+                            <img src="./img/ava.png" alt="Ava" width="35" height="35" class="ava">
                             <p class="text-not">Romeo</p>
                         </div>
                         <div class="status-rectangle"></div>
                     </div>
                     <div class="messenge-popup">
                         <div class="users-info">
-                            <img src="./img/ava.jpg" alt="Ava" width="35" height="35" class="ava">
+                            <img src="./img/ava.png" alt="Ava" width="35" height="35" class="ava">
                             <p class="text-not">Romeo</p>
                         </div>
                         <div class="status-rectangle"></div>
@@ -41,7 +41,7 @@
                 </div>
             </a>
             <div class="user-block">
-                <img src="./img/ava.jpg" alt="Ava" width="45" height="45" class="ava">
+                <img src="./img/ava.png" alt="Ava" width="45" height="45" class="ava">
                 <p class="name">Romeo</p>
                 <div class="popup-ava" style="display: none;">
                         <p class="profa">Profile</p>
@@ -67,13 +67,13 @@
     <h1 class="title">Students</h1>
 
     <div class="button-table">
-        <button class="add-student-btn" id="openModal">
-            <img src="./img/add.png" alt="add">
+        <button class="add-student-btn" id="openModal"> 
+            <img class="addimg" src="./img/add.png" alt="add">
         </button>
         <table class="student-table" id="student-table">
         <thead>
             <tr>
-                <th><input type="checkbox" aria-label="Select all rows"></th>
+                <th><input type="checkbox" aria-label="Select all rows"> </th>
                 <th>Group</th>
                 <th>Name</th>
                 <th>Gender</th>
@@ -88,7 +88,7 @@
     </table>
     </div>
    
-
+    <div class="modal-overlay"></div>
     <div class="students-modal" id="students-modal">
         <div class="flowers">
 
@@ -98,10 +98,12 @@
         </span>
         <h2 class="titleForm" id="titleModal">Add Student</h2>
         <form class="student-form" id="student-form">
+            <input type="hidden" id="student-id" name="id">
+        
             <div class="infoForm">
                 <div class="Lablesflex">
                     <label class="formGroup" for="group">Group</label>
-                    <select class="groupValue" id="group">
+                    <select class="groupValue" id="group" required>
                         <option value="" disabled selected>Select group</option>
                         <option value="pz-21">PZ-21</option>
                         <option value="pz-22">PZ-22</option>
@@ -110,36 +112,40 @@
                         <option value="pz-25">PZ-25</option>
                         <option value="pz-26">PZ-26</option>
                     </select>
+                    <span class="error-message" id="group-error"></span>
                 </div>
                 <div class="Lablesflex">
                     <label for="first-name">First name</label>
-                    <input type="text" id="first-name">
+                    <input type="text" id="first-name" required title="Тільки українські або англійські літери, мінімум 2 символи">
+                    <span class="error-message" id="first-name-error"></span>
                 </div>
                 <div class="Lablesflex">
                     <label for="last-name">Last name</label>
-                    <input type="text" id="last-name">
+                    <input type="text" id="last-name" required title="Тільки українські або англійські літери, мінімум 2 символи">
+                    <span class="error-message" id="last-name-error"></span>
                 </div>
                 <div class="Lablesflex">
                     <label for="gender">Gender</label>
-                    <select class="valueGender" id="gender">
+                    <select class="valueGender" id="gender" required>
                         <option value="" disabled selected>Select gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
+                    <span class="error-message" id="gender-error"></span>
                 </div>
                 <div class="Lablesflex">
                     <label for="birthday">Birthday</label>
-                    <input type="date" id="birthday">
+                    <input type="date" id="birthday" required>
+                    <span class="error-message" id="birthday-error"></span>
                 </div>
             </div>
-            
+        
             <div class="modelBtns">
                 <button class="cancBtn" type="button" id="canc-btn">Cancel</button>
                 <button class="CreateBtn" type="button" id="create-btn">Create</button>
-
             </div>
-           
-        </form>  
+        </form>
+        
     </div >
     
    
@@ -155,9 +161,6 @@
     </div>
 
 
- 
-    
-    
     
     
     <script src="scripts.js"></script>

@@ -1,0 +1,51 @@
+{
+    "name": "Student Manager PWA", 
+    "short_name": "Student PWA", 
+    "description": "Прогресивний веб-додаток для управління списком студентів із офлайн-доступом.", 
+  
+    "start_url": "/students.html", 
+    "scope": "/", 
+    "display": "standalone", 
+    "orientation": "portrait-primary", 
+    "background_color": "#f7f4f6", 
+    "theme_color": "#333333",
+    "icons": [
+      {
+        "src": "/img/ava.png", 
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+      {
+        "src":  "/img/ava.png", 
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src":  "/img/ava.png", 
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src":  "/img/ava.png", 
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+  
+    "screenshots": [
+      {
+        "src": "/img/1.png", 
+        "sizes": "1080x1920",
+        "type": "image/png",
+        "form_factor": "wide"
+      },
+      {
+        "src": "/img/2.png", 
+        "sizes": "1080x1920",
+        "type": "image/png",
+        "form_factor": "narrow"
+      }
+    ]
+  
+ 
+  }

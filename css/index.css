@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
-
+/*імпорт шрифта*/
 body {
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif; /*головний шрифт попінс запасний санс-серіф*/
     background-color: #f7f4f6;
 }
 
 .header_main {
     background-color: rgb(65, 64, 64);
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    gap: 15px;
+    display: flex; /*контейн що дозволяє розташовувати елементи радком або сперпчиком*/
+    align-items: center; /*центеваня елементів контейнера стосовни вертикальної осі*/
+    padding: 5px; /*внутрішні відступи з контейнером*/
+    gap: 15px; /*зовнішні відступи між елементами*/
 }
 
 .text_header {
-    text-decoration: none;
+    text-decoration: none; /*щоб був звичайний текст без підкреслення і тд*/
     color: #f5f5dc;
     font-size: 24px;
 }
 
 .user_info {
-    margin-left: auto;
+    margin-left: auto; /*максимальний зсув вправо у дочірнбому контейнері*/
     display: flex;
     align-items: center;
     gap: 15px;
@@ -28,46 +28,55 @@ body {
 
 .notification-bell {
     position: relative;
-    display: inline-block;
 }
 
 .bell {
-    margin-right: 20px; /* Зменшуємо з 100px до 20px */
-    width: 25px; /* Фіксований розмір для дзвіночка */
+    margin-right: 20px; 
+    width: 25px; 
     height: 25px;
+    transition: transform 0.3s ease; /* Плавний перехід для додаткової анімації */
 }
 
-.notification-dot {
-    position: absolute;
-    top: -5px;
-    right: 10px; /* Змінено з 90px для адаптивності */
-    width: 8px; /* Зменшуємо для маленьких екранів */
-    height: 8px;
-    background-color: red;
-    border-radius: 50%;
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+
+/* Анімація дзвіночка при наведенні */
+.notification-bell:hover .bell {
+    animation: bellSwing 0.6s ease infinite;
 }
 
-.notification-dot.active {
-    opacity: 1;
-    transform: scale(1);
-}
 
+@keyframes bellSwing {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
 .popup {
     position: absolute;
-    top: 100%;
-    left: 50%; /* Центруємо */
-    transform: translateX(-50%);
+    top: 100%; /* Під батьковим елементом */
+    left: 50%;
+    transform: translateX(-50%); /* Центрування по горизонталі */
     background-color: white;
     padding: 10px;
-    border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 10;
-    width: 200px; /* Фіксована ширина */
+    width: 200px; /* Базова ширина */
+    max-height: 200px; /* Обмежуємо висоту */
+    overflow-y: auto; /* Додаємо вертикальну прокрутку */
+    display: flex; /* Для вертикального розташування */
+    flex-direction: column; /* Елементи йдуть вертикально */
+    gap: 10px; /* Відступ між елементами */
 }
-
 .messenge-popup {
     display: flex;
     align-items: center;
@@ -97,14 +106,13 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 10px; /* Зменшуємо з 15px */
-    cursor: pointer;
+    gap: 10px; 
 }
 
 .ava {
     margin-top: 5px;
     border-radius: 50%;
-    width: 45px; /* Базовий розмір */
+    width: 45px; 
     height: 45px;
 }
 
@@ -116,14 +124,13 @@ body {
 
 .popup-ava {
     position: absolute;
-    top: 100%;
-    left: 50%; /* Центруємо */
-    transform: translateX(-50%);
+    top: 100%; /* Розташування під елементом, що викликає popup */
+    left: 50%;
+    transform: translateX(-50%); /* Центрування по горизонталі */
     background-color: white;
-    border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    width: 120px; /* Зменшуємо ширину */
+    z-index: 10; /* Вище інших елементів */
+    width: 120px; /* Базова ширина */
 }
 
 .profa {
@@ -131,86 +138,152 @@ body {
     padding: 5px 0;
 }
 
-/* Адаптивність для маленьких екранів */
+/* Адаптивність для середніх екранів (< 768px) */
+.popup-ava {
+    position: absolute;
+    top: 100%; /* Розташування під елементом, що викликає popup */
+    left: 50%;
+    transform: translateX(-50%); /* Центрування по горизонталі */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Вище інших елементів */
+    width: 100px; /* Зменшено базову ширину з 120px до 100px */
+    padding: 5px; /* Додано невеликий внутрішній відступ */
+}
+
+/* Адаптивність для середніх екранів (< 768px) */
 @media (max-width: 768px) {
     .header_main {
-        padding: 10px; /* Збільшуємо відступи для зручності */
-        flex-wrap: wrap; /* Дозволяємо перенос на маленьких екранах */
+        padding: 10px;
     }
 
     .text_header {
-        font-size: 20px; /* Зменшуємо текст */
+        font-size: 20px;
     }
 
     .user_info {
-        gap: 10px; /* Зменшуємо відстань між елементами */
+        gap: 10px;
     }
 
     .bell {
-        margin-right: 10px; /* Ще менше відступу */
-        width: 20px; /* Зменшуємо розмір дзвіночка */
+        margin-right: 10px;
+        width: 20px;
         height: 20px;
     }
 
     .notification-dot {
-        right: 5px; /* Коригуємо позицію */
+        right: 5px;
         width: 6px;
         height: 6px;
     }
 
     .ava {
-        width: 35px; /* Зменшуємо аватарку */
+        width: 35px;
         height: 35px;
     }
 
     .name {
-        font-size: 14px; /* Зменшуємо текст */
+        font-size: 14px;
         margin-right: 10px;
     }
 
     .popup {
-        width: 150px; /* Зменшуємо ширину випадаючого меню */
-        left: 0; /* Вирівнюємо зліва для маленьких екранів */
+        width: 150px; /* Зменшено ширину */
+        left: auto;
+        right: 10px; /* Фіксуємо праворуч */
         transform: none; /* Прибираємо зміщення */
-    }
-
-    .popup-ava {
-        width: 100px; /* Зменшуємо ширину */
-        left: 0; /* Вирівнюємо зліва */
-        transform: none;
+        height: 130px; /* Зменшуємо максимальну висоту */
+        padding: 8px; /* Зменшуємо відступ */
     }
 
     .status-rectangle {
-        width: 100px; /* Зменшуємо ширину прямокутника */
-        height: 30px;
+        width: 80px; /* Зменшено */
+        height: 25px; /* Зменшено */
+        margin-top: -25px; /* Коригуємо відступ */
     }
+
+    .popup-ava {
+        width: 90px; /* Зменшено з 100px до 90px */
+        
+        left: auto;
+        right: 10px; /* Фіксуємо праворуч */
+        transform: none;
+        top: 45px; /* Зменшено з 50px до 45px для компактності */
+        padding: 4px; /* Зменшено відступ */
+    }
+    .profa {
+        margin-left: 8px; 
+        padding: 3px 0; 
+        font-size: 11px; 
+    }
+
+   
 }
 
-/* Для дуже маленьких екранів (наприклад, < 480px) */
+/* Для маленьких екранів (< 480px) */
 @media (max-width: 480px) {
-    .header_main {
-        flex-direction: column; /* Вертикально на дуже маленьких екранах */
-        align-items: flex-start;
-    }
-
     .user_info {
         margin-left: 0;
         width: 100%;
         justify-content: space-between;
     }
 
-    .name {
-        display: none; /* Ховаємо ім’я на дуже маленьких екранах */
-    }
-
     .popup {
-        width: 120px;
+        width: 120px; /* Ще менша ширина */
+        height: 120px; /* Ще менша висота */
+        padding: 5px; /* Зменшуємо відступ */
+        right: 10px;
+        left: auto;
+        transform: none;
     }
 
     .popup-ava {
-        width: 80px;
+        width: 70px; /* Зменшено з 80px до 70px */
+        right: 10px;
+        left: auto;
+        top: 40px; /* Зменшено з 45px до 40px */
+        transform: none;
+        padding: 3px; /* Ще менший відступ */
     }
+
+    .bell {
+        margin-left: 140px;
+    }
+    .status-rectangle {
+        width: 60px; /* Зменшено */
+        height: 20px; /* Зменшено */
+        margin-top: -20px; /* Коригуємо відступ */
+    }
+   
 }
+
+/* Для дуже маленьких екранів (< 420px) */
+@media (max-width: 420px) {
+    .popup-ava {
+        width: 60px; /* Зменшено з 70px до 60px */
+        right: 5px;
+        top: 35px; /* Зменшено з 40px до 35px */
+        padding: 2px; /* Мінімальний відступ */
+    }
+
+    .profa {
+        margin-left: 8px; /* Зменшено з 10px до 8px */
+        padding: 2px 0; /* Зменшено з 3px до 2px */
+        font-size: 11px; /* Зменшено з 12px до 11px */
+    }
+
+    .popup {
+        width: 90px; /* Зменшено з 120px до 90px */
+        height: 40px; /* Зменшено з 70px до 50px */
+    }
+
+    .status-rectangle {
+        width: 70px; /* Зменшено з 100px до 70px */
+        height: 20px; /* Зменшено з 30px до 20px */
+    }
+   
+}
+
 .navbar{
     display: flex;
     
@@ -238,10 +311,9 @@ body {
 }
 
 .burger-menu {
-    display: none;
+    display: none; /*приховане*/
     flex-direction: column;
     gap: 5px;
-    cursor: pointer;
 }
 
 .bar {
@@ -276,18 +348,19 @@ body {
 
 @media (max-width: 768px) {
     .burger-menu {
-        display: flex;
+        display: flex; /*поява бургер меню*/
     }
 
     .nav-links {
-        display: none;
+        display: none; /*приховування лінків*/
         flex-direction: column;
         position: absolute;
         top: 60px;
         left: 0;
         width: 30%;
         background-color:  #f2dde2;
-        ;
+        font-size: 10px;
+        
     }
 
     .nav-links.active {
@@ -304,16 +377,12 @@ body {
 }
 
 
-
-/* Контейнер для кнопки і таблиці */
 .button-table {
     width: 100%;
-    max-width: 1200px; /* Максимальна ширина для великих екранів */
+    max-width: 1200px;
     margin: 0 auto; /* Центрування */
-    padding: 10px;
+    padding: 50px;
     box-sizing: border-box; /* Щоб padding не збільшував розмір */
-
-    
 }
 
 .add-student-btn {
@@ -322,28 +391,30 @@ body {
     background-color: #f2dde2;
     border: none;
     border-radius: 10%;
-    cursor: pointer;
     display: flex;
-    margin-left: 95%;
+    margin-left: 95%; /* Розташування праворуч */
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
     transition: background-color 0.3s ease;
-}
-.add-student-btn img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
+    user-select: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
 }
 
 .add-student-btn:hover {
     background-color: #e0c7cd;
 }
 
-/* Стилі для таблиці */
+.addimg {
+    width: 30px;
+    height: 30px;
+}
+
 .student-table {
     width: 100%; /* Таблиця займає всю доступну ширину */
-    border-collapse: collapse; /* Прибирає подвійні межі */
+    border-collapse: collapse; /* Прибирає межі */
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -360,13 +431,13 @@ body {
 /* Стилі для клітинок */
 .student-table td {
     padding: 10px;
-    border-bottom: 1px solid #ddd;
 }
 
-/* Адаптивність: горизонтальний скролінг на малих екранах */
+/* Адаптивність: горизонтальний скролінг на середніх екранах */
 @media (max-width: 768px) {
     .button-table {
-        overflow-x: auto; /* Додає горизонтальний скролінг, якщо таблиця не вміщається */
+        overflow-x: auto; /* Додає горизонтальний скролінг для таблиці */
+        position: relative; /* Для коректного позиціонування кнопки */
     }
 
     .student-table {
@@ -375,18 +446,24 @@ body {
 
     .student-table th,
     .student-table td {
-        font-size: 14px; /* Зменшуємо шрифт на малих екранах */
+        font-size: 14px; /* Зменшуємо шрифт */
         padding: 8px; /* Зменшуємо відступи */
     }
 
     .add-student-btn {
+        margin-top: 130px;
+        position: fixed; /* Фіксуємо кнопку */
+        top: 20px; /* Відступ зверху */
+        right: 20px; /* Відступ справа */
         width: 40px;
         height: 40px;
+        margin-left: 0; /* Прибираємо margin-left, бо він не потрібен із fixed */
+        z-index: 10; /* Щоб кнопка була поверх таблиці */
     }
 
-    .add-student-btn img {
-        width: 20px;
-        height: 20px;
+    .addimg {
+        width: 25px;
+        height: 25px;
     }
 }
 
@@ -399,14 +476,54 @@ body {
     }
 
     .add-student-btn {
+        margin-top: 140px;
+        position: fixed; /* Залишаємо фіксовану позицію */
+        top: 15px; /* Зменшуємо відступ зверху */
+        right: 15px; /* Зменшуємо відступ справа */
         width: 35px;
         height: 35px;
+        margin-left: 0; /* Прибираємо margin-left */
+        z-index: 10; /* Поверх таблиці */
     }
 
-    .add-student-btn img {
-        width: 18px;
-        height: 18px;
+    .add-student-btn span {
+        font-size: 14px;
+        pointer-events: none;
     }
+
+    .addimg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 420px){
+    .add-student-btn {
+        margin-top: 150px;
+        position: fixed; /* Залишаємо фіксовану позицію */
+        top: 15px; /* Зменшуємо відступ зверху */
+        right: 15px; /* Зменшуємо відступ справа */
+        width: 35px;
+        height: 35px;
+        margin-left: 0; /* Прибираємо margin-left */
+        z-index: 10; /* Поверх таблиці */
+    }
+
+
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Чорне затемнення */
+    z-index: 999; /* Вище за фон модального вікна */
+}
+.modal-overlay.active {
+    display: block;
 }
 
 .students-modal {
@@ -429,7 +546,7 @@ body {
 
 .students-modal::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -445,21 +562,36 @@ body {
     flex-direction: column;
     align-items: center;
 }
+.students-modal.active {
+    display: block;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+.modelBtns {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    width: auto;
+}
 
 .modal-close {
     position: absolute;
     top: 10px;
     right: 10px;
-    cursor: pointer;
 }
 
 .titleForm {
     margin-top: 10px;
     margin-bottom: 20px;
-    margin-left: 0; /* Зміщуємо заголовок ліворуч */
-    text-align: left; /* Вирівнювання ліворуч */
-    width: 100%; /* Забезпечуємо, що він займає всю ширину */
-    max-width: 400px; /* Узгоджуємо з .infoForm */
+    margin-left: 0; 
+    width: 100%; 
+    max-width: 400px; 
     align-self: flex-start; /* Вирівнюємо зліва у flex-контейнері */
 }
 
@@ -469,42 +601,71 @@ body {
     gap: 15px;
     width: 100%;
     max-width: 400px;
-    margin: 0 auto;
 }
+
+
 
 .Lablesflex {
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /*розташування елементів по краях що по серезині залишися простір*/
     width: 100%;
 }
 
 .Lablesflex label {
     width: 100px;
     text-align: left;
-    font-size: 16px; /* Однаковий розмір із кнопками */
+    font-size: 16px; 
 }
 
 .Lablesflex input,
 .Lablesflex select {
-    flex-grow: 1;
+    flex-grow: 1; /*розширення в межі контейнера пропорційне-1*/
     max-width: 250px;
     padding: 5px;
     box-sizing: border-box;
 }
+input,
+select {
+    border: 2px solid #ccc; /* Початковий стан */
+    padding: 5px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input.invalid,
+select.invalid {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+}
+
+input.valid,
+select.valid {
+    border: 2px solid green;
+    background-color: #e6ffe6;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+}
 
 
+/* Показуємо повідомлення, якщо є помилка */
+input:invalid + .error-message,
+select:invalid + .error-message {
+    display: block;
+}
 
-.modelBtns {
-    position: absolute; /* Позиціонуємо кнопки абсолютно */
-    bottom: 10px; /* Внизу модального вікна */
-    right: 10px; /* На рівні з хрестиком по горизонталі */
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    
+.side-error {
+    color: red;
+    font-size: 12px;
+    display: block; /* Завжди видно, якщо створено */
 }
 
 .CreateBtn,
@@ -513,10 +674,8 @@ body {
     padding: 10px;
     border-radius: 10px;
     background-color: #efa2db;
-    border: 1px solid #ccc;
-    cursor: pointer;
     text-align: center;
-    font-size: 16px; /* Однаковий розмір із лейблами */
+    font-size: 16px; 
 }
 
 .CreateBtn:hover,
@@ -525,12 +684,16 @@ body {
     color: white;
 }
 
+
+/* Решта коду до медіа-запитів залишається без змін */
+
 /* Адаптивність для середніх екранів (< 768px) */
 @media (max-width: 768px) {
     .students-modal {
-        width: 85%;
+        width: 70%;
         padding: 15px;
         height: 65%;
+        position: relative;
     }
 
     .Lablesflex {
@@ -548,16 +711,31 @@ body {
     }
 
     .modelBtns {
-        justify-content: flex-end; /* Залишаємо кнопки праворуч */
+        position: static; /* Розташування в потоці */
+        margin-top: 20px; /* Відступ зверху від форми */
+        width: 100%; /* Розтягуємо контейнер */
+        justify-content: flex-end; /* Вирівнювання кнопок праворуч */
+        padding-bottom: 10px; /* Відступ знизу */
+    }
+
+    .CreateBtn,
+    .cancBtn {
+        width: 100px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #efa2db;
+        text-align: center;
+        font-size: 16px;
     }
 }
 
 /* Адаптивність для маленьких екранів (< 480px) */
 @media (max-width: 480px) {
     .students-modal {
-        width: 95%;
+        width: 75%;
         padding: 10px;
-        height: 75px;
+        height: 75%;
+        position: relative;
     }
 
     .titleForm {
@@ -569,7 +747,7 @@ body {
     }
 
     .Lablesflex label {
-        font-size: 14px; /* Зменшуємо разом із кнопками */
+        font-size: 14px;
     }
 
     .Lablesflex input,
@@ -577,47 +755,202 @@ body {
         padding: 4px;
     }
 
+    .modelBtns {
+        position: static; /* Розташування в потоці */
+        margin-top: 20px; /* Відступ зверху */
+        width: 100%; /* Розтягуємо контейнер */
+        justify-content: flex-end; /* Вирівнювання кнопок праворуч */
+        padding-bottom: 10px; /* Відступ знизу */
+    }
+
     .CreateBtn,
     .cancBtn {
         width: 80px;
         padding: 8px;
-        font-size: 14px; /* Зменшуємо разом із лейблами */
+        font-size: 14px;
+        border-radius: 10px;
+        background-color: #efa2db;
+        text-align: center;
+    }
+
+    .CreateBtn:hover,
+    .cancBtn:hover {
+        background-color: #97367d;
+        color: white;
+    }
+}
+.status-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.status-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.status-icon.green {
+    background-color: green;
+}
+
+.status-icon.gray {
+    background-color: gray;
+}
+
+.actions-container {
+    display: flex;
+    gap: 10px; /* Відстань між кнопками Edit і Delete */
+}
+
+.editBtn, .cancelBtn {
+    width: 50px;
+    background-color: #f2dde2; 
+    border-radius: 10%;
+    color: #000000; 
+    border: none; /* Прибираємо стандартну обводку */
+    transition: all 0.3s ease; /* Плавний перехід */
+    gap: 10px;
+    margin-left: 20px;
+
+}
+
+.editBtn:hover, .cancelBtn:hover {
+    background-color: #e0c7cd; 
+    color: #5b3551; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    min-height: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.delmodal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border-radius: 10%;
+    background-color: #efa2db;
+    color: black;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.modal-buttons button:hover {
+    background-color: #f7b8e3;
+}
+
+/* Адаптивність для планшетів (768px і нижче) */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 20px;
+        max-width: 400px;
+        min-height: 200px;
+    }
+    .delmodal-close {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+    .modal-buttons {
+        gap: 15px;
+    }
+    .modal-buttons button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Адаптивність для мобільних (480px і нижче) */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 15px;
+        width: 85%;
+        max-width: 300px;
+        min-height: 180px;
+    }
+    .deltitle {
+        font-size: 18px;
+    }
+    .deltext {
+        font-size: 14px;
+    }
+    .delmodal-close {
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+        margin-top: 10px;
+    }
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .modal-buttons button {
+        padding: 8px;
+        width: 100%;
+        font-size: 16px;
     }
 }
 
 
-
-.editBtn, .cancelBtn {
-    width: 50px;
-    background-color: #f2dde2; /* Світло-рожевий фон */
-    border-radius: 10%;
-    color: #000000; /* Початковий колір тексту для контрасту */
-    border: none; /* Прибираємо стандартну обводку, якщо є */
-    cursor: pointer; /* Показує, що це клікабельний елемент */
-    transition: all 0.3s ease; /* Плавний перехід для всіх змін */
-}
-
-.editBtn:hover, .cancelBtn:hover {
-    background-color: #e0c7cd; /* Темніший рожевий при наведенні */
-    color: #5b3551; /* Темно-фіолетовий текст */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Додаємо тінь */
-}
-
 .buton-plag {
     display: flex;
-    justify-content: center; /* Центруємо горизонтально */
-    gap: 10px; /* Відстань між кнопками */
-    margin-top: 30px; /* Відступ зверху */
-    flex-wrap: wrap; /* Дозволяємо перенос кнопок на маленький екран */
+    justify-content: center;
+    gap: 9px; 
+    margin-top: 30px; 
+    flex-wrap: wrap;
 }
 
 .plagb {
-    padding: 10px 15px;
-    font-size: 16px;
+    padding: 8px 10px;
+    font-size: 12px;
     background-color: #efa2db;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    cursor: pointer;
 }
 
 .plagb:hover {
@@ -625,16 +958,31 @@ body {
     color: white;
 }
 
-/* Середні екрани (до 768px) */
 @media (max-width: 768px) {
     .buton-plag {
-        gap: 8px; /* Зменшуємо відстань між кнопками */
-        margin-top: 20px; /* Зменшуємо відступ зверху */
+        gap: 6px; 
+        margin-top: 20px; 
     }
 
     .plagb {
-        padding: 8px 12px; /* Зменшуємо розмір кнопок */
-        font-size: 14px; /* Зменшуємо шрифт */
+        padding: 4px 7px; 
+        font-size: 8px; 
     }
 }
+
+@media (max-width: 420px) {
+    .buton-plag {
+        gap: 3px; 
+        margin-top: 10px; 
+    }
+
+    .plagb {
+        padding: 3px 6px; 
+        font-size: 7px; 
+    }
+}
+
+
+
+
 
