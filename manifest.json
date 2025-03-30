@@ -11,22 +11,22 @@
     "theme_color": "#333333",
     "icons": [
       {
-        "src": "/img/ava.png", 
+        "src": "/img/ava1.png", 
         "sizes": "128x128",
         "type": "image/png"
       },
       {
-        "src":  "/img/ava.png", 
+        "src":  "/img/ava2.png", 
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src":  "/img/ava.png", 
+        "src":  "/img/ava3.png", 
         "sizes": "256x256",
         "type": "image/png"
       },
       {
-        "src":  "/img/ava.png", 
+        "src":  "/img/ava4.png", 
         "sizes": "512x512",
         "type": "image/png"
       }
@@ -35,13 +35,13 @@
     "screenshots": [
       {
         "src": "/img/1.png", 
-        "sizes": "1080x1920",
+        "sizes": "1918x911",
         "type": "image/png",
         "form_factor": "wide"
       },
       {
         "src": "/img/2.png", 
-        "sizes": "1080x1920",
+        "sizes": "945x907",
         "type": "image/png",
         "form_factor": "narrow"
       }
